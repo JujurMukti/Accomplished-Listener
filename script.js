@@ -5,11 +5,13 @@ const popup = document.getElementById('popup');
 const soundCorrect = document.getElementById("sound-correct");
 const soundIncorrect = document.getElementById("sound-incorrect");
 const soundGameOver = document.getElementById("sound-gameover");
+const audios = [document.getElementById('audio1'), document.getElementById('audio2'), document.getElementById('audio3')];
 
 const maxSelection = 3;
-const correctAnswers = ['Location 1', 'Location 10', 'Location 12'];
+const correctAnswers = [1, 10, 12];
 
 let selected = [];
+let answer = [];
 let attemptsLeft = 5;
 let playPopup = false;
 let waitAnimation = false;
@@ -21,20 +23,16 @@ function playSound(sound) {
   sound.play();
 }
 
-for (let i = 1; i <= 15; i++) {
-  const btn = document.createElement('button');
-  btn.innerText = `Location ${i}`;
-  btn.addEventListener('click', () => toggleSelection(btn));
-  grid.appendChild(btn);
-}
-
 function toggleSelection(button) {
   const value = button;
+  const getIdx = parseInt(button.dataset.x);
   if (selected.includes(value)) {
     selected = selected.filter(item => item !== value);
+    answer = answer.filter(item => item !== getIdx);
     button.classList.remove('selected', 'red-flash');
   } else if (selected.length < maxSelection) {
     selected.push(value);
+    answer.push(getIdx);
     button.classList.add('selected');
   } else {
      if (!waitAnimation) {
@@ -74,7 +72,7 @@ function showPopup(message, isSuccess) {
 
 submitBtn.addEventListener('click', () => {
   if (!playPopup ) {
-  const isCorrect = selected.every(sel => correctAnswers.includes(sel.innerText));
+  const isCorrect = answer.every(sel => correctAnswers.includes(sel));
   if (attemptsLeft <= 1) {
     showPopup("GAME OVER!", isCorrect);
     playSound(soundGameOver);
@@ -93,7 +91,13 @@ submitBtn.addEventListener('click', () => {
 }
 });
 
-const audios = [document.getElementById('audio1'), document.getElementById('audio2'), document.getElementById('audio3')];
+for (let i = 1; i <= 15; i++) {
+  const btn = document.createElement('button');
+  btn.innerText = `Location ${i}`;
+  btn.dataset.x = i;
+  btn.addEventListener('click', () => toggleSelection(btn));
+  grid.appendChild(btn);
+}
 
 audios.forEach((audio, idx) => {
   audio.addEventListener('play', () => {
