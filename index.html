@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Accomplished Listener</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    
+  <div id="orientation-warning">
+    <p>Please rotate your device to <strong>landscape</strong> mode to play.</p>
+  </div>
+
+  <div class="container">
+    <header>
+        <h1>Accomplished Listener</h1>
+    </header>
+    <main>
+      <div class="audio-container">
+        <div class="audio-block">
+          <p>Dialog 1</p>
+          <audio controls id="audio1" src="/sounds/audio1.mp3"></audio>
+        </div>
+        <div class="audio-block">
+          <p>Dialog 2</p>
+          <audio controls id="audio2" src="/sounds/audio2.mp3"></audio>
+        </div>
+        <div class="audio-block">
+          <p>Dialog 3</p>
+          <audio controls id="audio3" src="/sounds/audio3.mp3"></audio>
+        </div>
+      </div>
+      <div class="instruction-bar">
+        <p class="instruction">Guess the Locations!</p>
+        <p class="attempts" id="attempts"><strong id="heart">5</strong> Attempts Remaining</p>
+      </div>      
+      <div class="grid" id="locationGrid"></div>
+      <button id="submit" disabled>Submit</button>
+    </main>
+    <div id="popup"></div>
+  </div>
+
+  <audio id="sound-correct" src="sounds/correct.mp3" preload="auto"></audio>
+  <audio id="sound-incorrect" src="sounds/wrong.mp3" preloaf="auto"></audio>
+  <audio id="sound-gameover" src="sounds/gameover.mp3" preloaf="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
