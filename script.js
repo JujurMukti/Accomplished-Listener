@@ -75,12 +75,22 @@ submitBtn.addEventListener('click', () => {
   const isCorrect = answer.every(sel => correctAnswers.includes(sel));
   if (attemptsLeft <= 1) {
     showPopup("GAME OVER!", isCorrect);
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
     playSound(soundGameOver);
     document.querySelectorAll('.audio-container audio' ).forEach(audio => {
       audio.pause();
     });
   } else {
     showPopup(isCorrect ? "CORRECT!" : "TRY AGAIN!", isCorrect);
+    if (isCorrect) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    }
     isCorrect ? playSound(soundCorrect) : playSound(soundIncorrect);
   }
 
