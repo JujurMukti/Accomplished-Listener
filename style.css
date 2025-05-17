@@ -17,7 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #222;
+  background-color: #017878;
   color: white;
 }
 
@@ -80,7 +80,7 @@ main {
 }
 
 #heart {
-  color: #4CAF50;
+  color: #6b9a40;
 }
 
 .grid {
@@ -102,9 +102,9 @@ main {
 }
 
 .grid button.selected {
-  background-color: #4caf50;
+  background-color: #a3d376;
   color: white;
-  border-color: #388e3c;
+  border-color: #6b9a40;
 }
 
 .grid button.red-flash {

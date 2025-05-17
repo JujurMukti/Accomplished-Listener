@@ -8,7 +8,8 @@ const soundGameOver = document.getElementById("sound-gameover");
 const audios = [document.getElementById('audio1'), document.getElementById('audio2'), document.getElementById('audio3')];
 
 const maxSelection = 3;
-const correctAnswers = [1, 10, 12];
+const correctAnswers = [3, 6, 13];
+const locations = ['Canteen', 'Toilet', 'Restaurant', 'School', 'Park', 'Farm', 'House', 'Valley', 'Beach', 'Garden', 'Backyard', 'Office', 'Classroom', 'Basement', 'Parking Lot'];
 
 let selected = [];
 let answer = [];
@@ -103,7 +104,7 @@ submitBtn.addEventListener('click', () => {
 
 for (let i = 1; i <= 15; i++) {
   const btn = document.createElement('button');
-  btn.innerText = `Location ${i}`;
+  btn.innerText = locations[i - 1];
   btn.dataset.x = i;
   btn.addEventListener('click', () => toggleSelection(btn));
   grid.appendChild(btn);
